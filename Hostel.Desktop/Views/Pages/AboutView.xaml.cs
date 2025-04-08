@@ -1,8 +1,8 @@
 ﻿namespace Hostel.Desktop.Views;
 
-public partial class MainView : Page
+public partial class AboutView : Page
 {
-    public MainView()
+    public AboutView()
     {
         InitializeComponent();
     }
