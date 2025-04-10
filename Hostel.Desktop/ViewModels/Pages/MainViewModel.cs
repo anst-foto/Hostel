@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using System.Linq;
 using Hostel.Desktop.Models;
 
 namespace Hostel.Desktop.ViewModels;
@@ -23,19 +24,18 @@ public class MainViewModel : BasePageViewModel
     {
         Title = "Список номеров";
 
-        Rooms.Add(new Room()
+        Load();
+    }
+
+    public void Load()
+    {
+        Rooms.Clear();
+
+        var context = new DataContext();
+        var rooms = context.Rooms.ToList();
+        foreach (var room in rooms)
         {
-            Id = 1,
-            Name = "101",
-            Description = "lux",
-            Price = 1000
-        });
-        Rooms.Add(new Room()
-        {
-            Id = 2,
-            Name = "102",
-            Description = "deluxe",
-            Price = 100
-        });
+            Rooms.Add(room);
+        }
     }
 }
